@@ -43,8 +43,16 @@ public class MyLexer{
 			while((peekInt = sourceReader.read()) != -1){
 				peekChar = (char)peekInt;
 				// System.out.println(peekChar);
-				if(peekChar != ' ' && tokenTable.containsKey(peekChar)){
+				if(peekChar != ' ' && tokenTable.containsKey(String.valueOf(peekChar))){
+					check += peekChar;
+					peekInt = sourceReader.read();
+					peekChar = (char)peekInt;
+					if(tokenTable.containsKey(check + peekChar)){
 
+					}else{
+						//Print thing
+						check = String.valueOf(peekChar);
+					}
 				}else if(peekChar == ' ' || peekChar == '\t'){
 					if(tokenTable.containsKey(check)){
 						prevToken = tokenTable.get(check);
@@ -58,7 +66,6 @@ public class MyLexer{
 						}
 						System.out.println(check);
 					}
-
 					prevValue = check;
 					check = "";
 				}else if(peekChar == ';'){
@@ -68,15 +75,16 @@ public class MyLexer{
 						if(prevToken == "<Prim_type>"){
 							if(symbolTable.containsKey(check)){
 								System.out.println("error: variable " + check + " is already defined");
-							}else{0
+							}else{
 								symbolTable.put(check, prevValue);
 							}
 						}
 						System.out.println(check);
 					}
+					prevValue = check;
+					check = "";
 				}else{
 					check += peekChar;
-					
 				}
 			}
 			// 	if(!commentMode && blockCommentBeginPattern.matcher(next).matches()){
