@@ -61,8 +61,19 @@ public class MyLexer{
 
 					prevValue = check;
 					check = "";
-				}else if(peekChar == ";"){
-
+				}else if(peekChar == ';'){
+					if(tokenTable.containsKey(check)){
+						prevToken = tokenTable.get(check);
+					}else{
+						if(prevToken == "<Prim_type>"){
+							if(symbolTable.containsKey(check)){
+								System.out.println("error: variable " + check + " is already defined");
+							}else{0
+								symbolTable.put(check, prevValue);
+							}
+						}
+						System.out.println(check);
+					}
 				}else{
 					check += peekChar;
 					
