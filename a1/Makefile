@@ -8,7 +8,7 @@ CLASS = $(SOURCE:.java=.class)
 all: $(CLASS)
 
 run:
-	$(JAVA) MyLexer
+	$(JAVA) MyLexer token.txt testCase3.java
 
 clean:
 	rm *.class

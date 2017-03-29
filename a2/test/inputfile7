@@ -1,0 +1,11 @@
+my program Test41/
+num x/
+num y/
+str name/
+assign x 4/
+assign y 3/
+assign name "Bob"/
+loop x {
+show name/
+}
+

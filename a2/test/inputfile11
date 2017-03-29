@@ -1,0 +1,24 @@
+my program Test61/
+num x/
+num y/
+str name/
+assign x 4/
+assign y 3/
+assign name "Bob"/
+num a/
+num b/
+assign a 1/
+assign b 0/
+loop x {
+show name/
+	loop y {
+		check a == b {
+			show "o"/
+		}
+		check a != b {
+			show "x"/
+		}
+	}
+	assign b a/
+}
+

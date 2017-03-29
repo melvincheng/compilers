@@ -1,4 +1,4 @@
-int a;/* This is a
+/* This is a
 	sample program */
 public class HelloWorld {
 	public static void main(String[] args) {

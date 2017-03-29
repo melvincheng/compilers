@@ -1,0 +1,9 @@
+my program Test21/
+num x/
+num y/
+str name/
+assign x 4/
+assign y
+assign name "Bob"/
+
+

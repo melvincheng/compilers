@@ -1,0 +1,23 @@
+my program AdelesExample/
+num x/
+num y/
+str name/
+assign name "Adele"/
+assign x 5/
+
+loop 3 { 
+	show x / 
+}
+
+assign y 10/
+
+loop x {
+	show y/
+}
+
+loop y {
+	show name/
+	loop 3 {
+		show y/
+	}
+}
