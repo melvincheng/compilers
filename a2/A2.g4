@@ -5,9 +5,9 @@ grammar A2;
 }
 
 @members {
-	String firstName = "Adele";
-	String lastName = "Hedrick";
-	String studentNum = "100xxxxxx";
+	String firstName = "Melvin";
+	String lastName = "Cheng";
+	String studentNum = "100526486";
 	int uniqueLoops = 0;
 }
 
@@ -35,11 +35,39 @@ my_program returns [String s]
 /*
 		statement --> num_decl | str_decl | var_assign | loop | show | check
 */
+statement returns [String s]
+    : num_decl
+        {
+            $s = $num_decl.s;
+        }
+    | str_decl
+        {
+            $s = $str_decl.s;
+        }
+    | var_assign
+        {
+            $s = $var_assign.s;
+        }
+    | show
+        {
+            $s = $show.s;
+        }
+    | loop
+        {
+            $s = $loop.s;
+        }
+    ;
 
 
 /*
 		loop --> 'loop' var '{' statement+ '}'
 */
+loop returns [String s]
+    :'loop' var '{' statement+ '}'
+        {
+            $s = ;
+        }
+    ;
 
 /*
 		check --> check condition '{' statement+ '}'
@@ -49,29 +77,45 @@ my_program returns [String s]
 		condition --> var OP var
 */
 
-
 /*
 		num_decl --> 'num' ID '/'
 */
-
-
+num_decl returns [String s]
+    :'num' ID '/'
+        {
+            $s = "int " + $ID.getText() + ";";
+        }
+    ;
 
 /*
 		str_decl --> 'str' ID '/'
 */
-
-
+str_decl returns [String s]
+    :'str' ID '/'
+        {
+            $s = "String " + $ID.getText() + ";";
+        }
+    ;
 
 /*
 		var_assign --> 'assign' ID var '/'
 */
-
-
+var_assign returns [String s]
+    :'assign' ID var '/'
+        {
+            $s = $ID.getText() + " = " + $var.s + ";";
+        }
+    ;
 
 /*
 		show --> 'show' var '/'
 */
-
+show returns [String s]
+    :'show' var '/'
+        {
+            $s = "System.out.println(" + $var.s + ")" + ";";
+        }
+    ;
 
 
 /*

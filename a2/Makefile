@@ -3,7 +3,7 @@ all:
 	javac -cp ./antlr-4.6-complete.jar:. *.java
 
 test1:
-	java -cp ~/antlr-4.6-complete.jar:. org.antlr.v4.runtime.misc.TestRig A2 r -gui <test/inputfile1
+	java -cp ./antlr-4.6-complete.jar:. org.antlr.v4.runtime.misc.TestRig A2 r -gui <test/inputfile1
 	java -cp ./antlr-4.6-complete.jar:. ParseFile test/inputfile1 >Test11.java
 	javac Test11.java
 	java -cp . Test11
